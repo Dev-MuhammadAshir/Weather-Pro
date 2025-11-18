@@ -1,0 +1,490 @@
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+/* Updated professional theme for weather app */
+:root {
+  --bg-gradient-start: #d9e9f5;
+  --bg-gradient-end: #b9d4e6;
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.35);
+  --text-color: #0f1c2e;
+  --accent-blue: #3b82f6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+  background: linear-gradient(140deg, var(--bg-gradient-start), var(--bg-gradient-end));
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+/* =========================================================
+   GLASS EFFECT
+========================================================= */
+.glass {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Buttons with subtle frosted look */
+.glass-btn {
+    background: rgba(255, 255, 255, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 8px 12px;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.18s ease;
+    color: #0f1c2e;
+    font-weight: 500;
+}
+
+/* Buttons with subtle frosted look  Add-fav*/
+.glass-btn-add {
+    background: rgba(255, 255, 255, 0.28);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 8px 8px;
+    cursor: pointer;
+    transition: 0.18s ease;
+    color: #0f1c2e;
+    font-weight: 400;
+}
+
+
+.glass-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.small-btn {
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+/* Toggle buttons */
+.toggle-btn {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+.navbar {
+    width: 100%;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+/* Left section */
+.app-logo {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* Center search bar */
+.nav-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 420px;
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 10px 14px;
+    padding-right: 42px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.75);
+}
+
+#search-btn {
+    position: absolute;
+    right: 6px;
+}
+
+/* Right section (toggles + favorites) */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Suggestions dropdown */
+.suggestions {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.4);
+    z-index: 30;
+}
+
+.suggest-item {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.suggest-item:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+/* =========================================================
+   FAVORITES DRAWER (RIGHT SIDE)
+========================================================= */
+.favorites-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 320px;
+    height: 100vh;
+    padding: 20px;
+    z-index: 40;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.favorites-drawer.open {
+    transform: translateX(0);
+}
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.favorites-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.favorite-city {
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgba(255,255,255,0.4);
+}
+
+.favorite-city:hover {
+    background: rgba(255,255,255,0.35);
+}
+
+.drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 35;
+}
+
+/* =========================================================
+   MAIN SECTIONS
+========================================================= */
+main {
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 22px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title-weather {
+    font-size: 22px;
+    font-weight: 600;
+    
+}
+
+/* =========================================================
+   CURRENT WEATHER CARD
+========================================================= */
+.weather-card {
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 22px;
+    text-align: center;
+}
+
+.weather-card img {
+    width: 100px;
+    height: 100px;
+}
+
+.weather-details {
+    margin-top: 12px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   HOURLY FORECAST
+========================================================= */
+.hourly-container {
+    margin-top: 15px;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.hour-card {
+    min-width: 90px;
+    padding: 10px;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.hour-card img {
+    width: 55px;
+    height: 55px;
+}
+
+/* =========================================================
+   5-DAY FORECAST
+========================================================= */
+.forecast-container {
+    margin-top: 20px;
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+.forecast-card {
+    padding: 15px;
+    text-align: center;
+    border-radius: 18px;
+}
+
+.forecast-card img {
+    width: 75px;
+}
+
+/* =========================================================
+   CHART SECTIONS
+========================================================= */
+canvas {
+    margin-top: 20px;
+    width: 100% !important;
+    max-height: 340px;
+}
+
+/* =========================================================
+   TOASTS
+========================================================= */
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    padding: 12px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.5);
+    min-width: 240px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.4s ease;
+}
+
+.toast button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 16px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media (max-width: 768px) {
+    .nav-right {
+        gap: 6px;
+    }
+
+    .toggle-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .navbar {
+        padding: 10px;
+        flex-wrap: wrap;
+        row-gap: 10px;
+        justify-content: space-between;
+    }
+
+    .nav-center {
+        order: 3;
+        width: 100%;
+    }
+
+    .search-wrapper {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .toggle-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 15px;
+    }
+
+    .section {
+        padding: 16px;
+    }
+
+    .forecast-container {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    }
+}
+
+
+.dark {
+  --bg-gradient-start: #0d1b2a;
+  --bg-gradient-end: #1b263b;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --text-color: #e0e6ef;
+  --accent-blue: #60a5fa;
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 18px;
+  border: 1px solid var(--glass-border);
+  transition: 0.3s ease;
+}
+
+glass:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.navbar {
+  padding: 16px 24px;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+}
+
+.search-wrapper input {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.suggestions {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.section {
+  padding: 24px;
+  margin-bottom: 32px;
+  border-radius: 22px;
+}
+
+.weather-card img {
+  width: 110px;
+}
+
+.hour-card {
+  background: var(--glass-bg);
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+}
+
+.forecast-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+}
+
+.footer {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 18px;
+  }
+}
+

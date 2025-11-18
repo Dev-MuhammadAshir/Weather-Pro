@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Forecast Pro</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Material Symbols Rounded (modern icons) -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- ====================== NAVBAR ====================== -->
+    <nav class="navbar glass">
+        <div class="nav-left">
+            <div class="app-logo">WeatherPro</div>
+        </div>
+
+        <div class="nav-center">
+            <div class="search-wrapper">
+                <input id="city-input" type="text" placeholder="Search city..." autocomplete="off" />
+                <button id="search-btn" class="glass-btn small-btn"><span class="material-symbols-rounded">search</span></button>
+                <div id="suggestions" class="suggestions"></div>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <!-- Unit Toggle -->
+            <button id="unit-toggle" class="glass-btn toggle-btn" title="Toggle units"><span id="unit-icon" class="material-symbols-rounded">swap_vert</span></button>
+
+            <!-- Theme Toggle -->
+            <button id="theme-toggle" class="glass-btn toggle-btn" title="Toggle theme"><span id="theme-icon" class="material-symbols-rounded">dark_mode</span></button>
+
+            <!-- Favorites Drawer Toggle -->
+            <button id="favorites-toggle" class="glass-btn toggle-btn" title="Favorites"><span class="material-symbols-rounded">favorite</span></button>
+        </div>
+    </nav>
+
+    <!-- ====================== FAVORITES DRAWER (RIGHT) ====================== -->
+    <aside id="favorites-drawer" class="favorites-drawer glass hidden">
+        <div class="drawer-header">
+            <h3>Your Favorites</h3>
+            <button id="close-fav" class="glass-btn small-btn"><span class="material-symbols-rounded">close</span></button>
+        </div>
+
+        <div id="favorites-list" class="favorites-list">
+            <!-- Favorite cities will appear here -->
+        </div>
+    </aside>
+
+    <!-- Overlay for drawer -->
+    <div id="drawer-overlay" class="drawer-overlay hidden"></div>
+
+    <!-- ====================== TOAST CONTAINER ====================== -->
+    <div id="toast-container"></div>
+
+    <!-- ====================== MAIN CONTENT ====================== -->
+    <main>
+
+        <!-- Current Weather -->
+        <section id="current-weather" class="section glass">
+            <div class="section-header">
+                <h2 class="title-weather">Current Weather</h2>
+                <button id="add-favorite" class="glass-btn-add">
+                    <span class="material-symbols-rounded">bookmark_add</span>
+                     <h4>Add to favorite</h4>
+                </button>
+            </div>
+
+            <div id="weather-display" class="weather-card">
+                <p class="placeholder">Search a city to view weather.</p>
+            </div>
+        </section>
+
+        <!-- Hourly Forecast -->
+        <section id="hourly-forecast" class="section glass">
+            <h2>Hourly Forecast</h2>
+            <div id="hourly-container" class="hourly-container"></div>
+        </section>
+
+        <!-- Weekly (7-Day) Temperature Chart -->
+        <section id="weekly-chart" class="section glass">
+            <h2>Weekly Temperature</h2>
+            <canvas id="weeklyTempChart"></canvas>
+        </section>
+
+        <!-- Precipitation Chart -->
+        <section id="precipitation-chart" class="section glass">
+            <h2>Precipitation (Next 24 Hours)</h2>
+            <canvas id="precipChart"></canvas>
+        </section>
+
+        <!-- 5-Day Forecast -->
+        <section id="forecast" class="section glass">
+            <h2>5-Day Forecast</h2>
+            <div id="forecast-display" class="forecast-container"></div>
+        </section>
+    </main>
+
+    <!-- ====================== FOOTER ====================== -->
+    <footer class="footer glass">
+        <p>© 2025 WeatherPro <strong>Waqas Khawajah SWEE/86</strong> • Powered by OpenWeather API • Designed with precision</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
